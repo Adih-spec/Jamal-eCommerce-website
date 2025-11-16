@@ -767,8 +767,7 @@
   -->
 
   <main>
-
-    <div class="container">
+  <div class="container">
         <h1>💻 Premium Laptop Collection</h1>
         <div class="gallery" id="gallery"></div>
     </div>
@@ -781,13 +780,13 @@
         </div>
     </div>
 
-     <script>
+    <script>
         const laptops = [
             {
                 id: 1,
                 name: "MacBook Pro 16\"",
                 price: "$2,499",
-                icon: "💻",
+                image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80",
                 brief: "Powerful M3 Pro chip, stunning Retina display",
                 specs: {
                     processor: "Apple M3 Pro",
@@ -802,7 +801,7 @@
             {
                 id: 2,
                 name: "Dell XPS 15",
-                icon: "🖥️",
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
                 price: "$1,899",
                 brief: "InfinityEdge display, premium build quality",
                 specs: {
@@ -818,7 +817,7 @@
             {
                 id: 3,
                 name: "Lenovo ThinkPad X1",
-                icon: "⌨️",
+                image: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=500&q=80",
                 price: "$1,699",
                 brief: "Business-class durability, legendary keyboard",
                 specs: {
@@ -834,7 +833,7 @@
             {
                 id: 4,
                 name: "ASUS ROG Strix G16",
-                icon: "🎮",
+                image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
                 price: "$1,999",
                 brief: "Gaming powerhouse, RGB lighting, high refresh rate",
                 specs: {
@@ -846,11 +845,11 @@
                     battery: "Up to 8 hours"
                 },
                 description: "Dominate the competition. The ROG Strix G16 delivers uncompromising gaming performance with a high-refresh display, powerful RTX graphics, and advanced cooling for extended gaming sessions."
-            },    
+            },
             {
                 id: 5,
                 name: "HP Spectre x360",
-                icon: "✨",
+                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80",
                 price: "$1,599",
                 brief: "2-in-1 convertible, gem-cut design, pen included",
                 specs: {
@@ -866,7 +865,7 @@
             {
                 id: 6,
                 name: "Microsoft Surface Laptop 5",
-                icon: "🪟",
+                image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&q=80",
                 price: "$1,299",
                 brief: "Sleek design, PixelSense touchscreen, premium feel",
                 specs: {
@@ -885,7 +884,9 @@
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = laptops.map(laptop => `
                 <div class="laptop-card" onclick="showDetails(${laptop.id})">
-                    <div class="laptop-image">${laptop.icon}</div>
+                    <div class="laptop-image">
+                        <img src="${laptop.image}" alt="${laptop.name}">
+                    </div>
                     <div class="laptop-info">
                         <div class="laptop-name">${laptop.name}</div>
                         <div class="laptop-price">${laptop.price}</div>
@@ -897,13 +898,14 @@
                 </div>
             `).join('');
         }
+
         function showDetails(id) {
             const laptop = laptops.find(l => l.id === id);
             const modal = document.getElementById('modal');
             const modalImage = document.getElementById('modalImage');
             const modalDetails = document.getElementById('modalDetails');
 
-            modalImage.innerHTML = laptop.icon;
+            modalImage.innerHTML = `<img src="${laptop.image}" alt="${laptop.name}">`;
             
             const specsHTML = Object.entries(laptop.specs).map(([key, value]) => `
                 <div class="spec-item">

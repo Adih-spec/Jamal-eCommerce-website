@@ -3152,7 +3152,7 @@ footer {
   .blog { margin-bottom: 50px; }
   
   .blog-card { min-width: -webkit-calc(25% - 22.5px); min-width: calc(25% - 22.5px); }
-.container {
+  .container {
             max-width: 1200px;
             margin: 0 auto;
         }

@@ -929,31 +929,34 @@
             }
         ];
 
-        function renderGallery() {
+    function renderGallery() {
             const gallery = document.getElementById('gallery');
-            gallery.innerHTML = laptops.map(laptop => `
-                <div class="laptop-card" onclick="showDetails(${laptop.id})">
-                    <div class="laptop-image">${laptop.icon}</div>
-                    <div class="laptop-info">
-                        <div class="laptop-name">${laptop.name}</div>
-                        <div class="laptop-price">${laptop.price}</div>
-                        <div class="laptop-brief">${laptop.brief}</div>
-                        <button class="view-details-btn" onclick="event.stopPropagation(); showDetails(${laptop.id})">
+            gallery.innerHTML = desktops.map(desktop => `
+                <div class="desktop-card" onclick="showDetails(${desktop.id})">
+                    <div class="desktop-image">
+                        <img src="${desktop.image}" alt="${desktop.name}">
+                    </div>
+                    <div class="desktop-info">
+                        <div class="desktop-name">${desktop.name}</div>
+                        <div class="desktop-price">${desktop.price}</div>
+                        <div class="desktop-brief">${desktop.brief}</div>
+                        <button class="view-details-btn" onclick="event.stopPropagation(); showDetails(${desktop.id})">
                             View Details
                         </button>
                     </div>
                 </div>
             `).join('');
         }
+
         function showDetails(id) {
-            const laptop = laptops.find(l => l.id === id);
+            const desktop = desktops.find(d => d.id === id);
             const modal = document.getElementById('modal');
             const modalImage = document.getElementById('modalImage');
             const modalDetails = document.getElementById('modalDetails');
 
-            modalImage.innerHTML = laptop.icon;
+            modalImage.innerHTML = `<img src="${desktop.image}" alt="${desktop.name}">`;
             
-            const specsHTML = Object.entries(laptop.specs).map(([key, value]) => `
+            const specsHTML = Object.entries(desktop.specs).map(([key, value]) => `
                 <div class="spec-item">
                     <div class="spec-label">${key.charAt(0).toUpperCase() + key.slice(1)}:</div>
                     <div class="spec-value">${value}</div>
@@ -961,14 +964,14 @@
             `).join('');
 
             modalDetails.innerHTML = `
-                <div class="modal-name">${laptop.name}</div>
-                <div class="modal-price">${laptop.price}</div>
+                <div class="modal-name">${desktop.name}</div>
+                <div class="modal-price">${desktop.price}</div>
                 <div class="specs-section">
                     <div class="specs-title">Technical Specifications</div>
                     ${specsHTML}
                 </div>
-                <div class="description">${laptop.description}</div>
-                <button class="buy-btn" onclick="buyNow('${laptop.name}')">Add to Cart</button>
+                <div class="description">${desktop.description}</div>
+                <button class="buy-btn" onclick="buyNow('${desktop.name}')">Add to Cart</button>
             `;
 
             modal.classList.add('active');
@@ -981,8 +984,8 @@
             document.body.style.overflow = 'auto';
         }
 
-        function buyNow(laptopName) {
-            alert(`${laptopName} has been added to your cart!`);
+        function buyNow(desktopName) {
+            alert(`${desktopName} has been added to your cart!`);
             closeModal();
         }
 
@@ -994,7 +997,7 @@
         });
 
         // Initialize gallery
-        renderGallery();
+        renderGallery();    
     </script>
 
   </main>

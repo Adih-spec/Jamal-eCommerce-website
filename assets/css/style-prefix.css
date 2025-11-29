@@ -3152,6 +3152,8 @@ footer {
   .blog { margin-bottom: 50px; }
   
   .blog-card { min-width: -webkit-calc(25% - 22.5px); min-width: calc(25% - 22.5px); }
+
+ /* laptop section */
   .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -3384,14 +3386,13 @@ footer {
         .buy-btn:hover {
             transform: scale(1.02);
         }
-
+/* desktop section */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        
         h1 {
             text-align: center;
             color: white;
